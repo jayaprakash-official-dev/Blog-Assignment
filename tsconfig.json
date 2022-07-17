@@ -17,6 +17,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "strictPropertyInitialization": false,
+    "useUnknownInCatchVariables": false,
     "noEmit": true,
     "jsx": "react-jsx"
   },
