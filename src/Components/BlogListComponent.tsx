@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { UserStateManager } from "../Voltio/UserStateManager";
 import { proxy, useSnapshot } from "valtio";
 import { UserState } from "../Voltio/store";
@@ -26,12 +26,14 @@ function BlogListComponent() {
   };
   useEffect(() => {
     getBlog();
-  }, [BlogList.data?.length]);
+  }, []);
   return (
     <>
       {/* loader */}
       {isLoading ? (
-        <LoaderComponent width={800} height={200} count={10} />
+        <div style={{padding:20}}>
+          <LoaderComponent width={400} height={200} count={10} size={6} />
+        </div>
       ) : (
         <>
           {

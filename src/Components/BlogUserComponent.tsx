@@ -18,15 +18,15 @@ function BlogUserComponent() {
   const { UserList, isLoading } = useSnapshot(UserState);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const onSelect = (item: UserResponse) => {
+  const onSelect = async (item: UserResponse) => {
     setSelectedIndex(item.id);
+    if (item.id) {
+      await UserStateManager.getUserBlog(item.id);
+    }
   };
 
   const getUser = async () => {
     await UserStateManager.getUser();
-    if (UserList.data) {
-      setSelectedIndex(UserList.data[0].id);
-    }
   };
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function BlogUserComponent() {
     <>
       {/* loader */}
       {isLoading ? (
-        <LoaderComponent width={300} height={50} count={10} />
+        <LoaderComponent width={300} height={50} count={10} size={12} />
       ) : (
         //list of users
         <>

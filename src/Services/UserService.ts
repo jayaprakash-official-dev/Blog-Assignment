@@ -9,8 +9,6 @@ class UserServices {
     UserState.isLoading = true;
     try {
       const getUserList = await axios.get<UserResponse[]>("/users");
-      throw new Error("i am 404 error");
-
       response.data = getUserList.data;
       response.success = true;
     } catch (error) {

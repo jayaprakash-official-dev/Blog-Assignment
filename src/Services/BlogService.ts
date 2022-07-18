@@ -4,11 +4,14 @@ import { BlogResponse } from "../Models/Response/BlogModelResponse";
 import { BlogState } from "../Voltio/store";
 
 class BlogServices {
-  static async getBlogs() {
+  static async getBlogs(userId?: number) {
     const response = new SuccessResponse<BlogResponse[]>();
     BlogState.isLoading = true;
     try {
-      const getBlogList = await axios.get<BlogResponse[]>("/posts");
+      const url = userId ? `/posts/?userId=${userId}` : `/posts`;
+      console.log(url, "urlurl");
+      
+      const getBlogList = await axios.get<BlogResponse[]>(url);
       response.data = getBlogList.data;
       response.success = true;
     } catch (error) {

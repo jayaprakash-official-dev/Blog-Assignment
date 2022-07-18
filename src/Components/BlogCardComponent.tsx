@@ -1,6 +1,13 @@
 import React from "react";
-import { Typography, Card, CardContent } from "@mui/material";
+import {
+  Typography,
+  Card,
+  CardContent,
+  CardHeader,
+  Button,
+} from "@mui/material";
 import { BlogResponse } from "../Models/Response/BlogModelResponse";
+import { motion } from "framer-motion";
 
 interface BlogCarProps {
   blogData: BlogResponse;
@@ -8,16 +15,36 @@ interface BlogCarProps {
 
 function BlogCardComponent(blog: BlogCarProps) {
   return (
-    <Card sx={{ minWidth: 275,height:180 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} gutterBottom>
-          {blog.blogData.title}
-        </Typography>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {blog.blogData.body}
-        </Typography>
-      </CardContent>
-    </Card>
+    <motion.div whileHover={{ scale: 1.1 }} animate={{ y: [-10, 0] }}>
+      <Card
+        variant="outlined"
+        sx={{
+          minWidth: 275,
+          maxHeight: 200,
+          height: 200,
+          background:
+            "-webkit-linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+      
+          borderWidth: 0,
+        }}
+      >
+        <CardContent>
+          <Typography
+            sx={{ fontSize: 20, fontWeight: "bold", color: "#fff" }}
+            gutterBottom
+          >
+            {blog.blogData.title}
+          </Typography>
+          <Typography
+            sx={{ fontSize: 12, color: "#fff", paddingTop: 2 }}
+            color="text.secondary"
+            gutterBottom
+          >
+            {blog.blogData.body}
+          </Typography>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 }
 
