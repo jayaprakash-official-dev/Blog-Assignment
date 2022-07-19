@@ -1,4 +1,4 @@
-import { proxy, useSnapshot } from "valtio";
+import { proxy } from "valtio";
 import { UserResponse } from "../Models/Response/UserModelResponse";
 import { BlogResponse } from "../Models/Response/BlogModelResponse";
 import { SuccessResponse } from "../Models/ResponseModel";
@@ -9,7 +9,7 @@ interface UserStoreTypes {
 }
 
 interface BlogStoreTypes {
-  BlogList: SuccessResponse<BlogResponse[]>;
+  BlogList: SuccessResponse<BlogResponse[], UserResponse>;
   isLoading: Boolean;
 }
 
@@ -19,6 +19,6 @@ export const UserState = proxy<UserStoreTypes>({
 });
 
 export const BlogState = proxy<BlogStoreTypes>({
-  BlogList: {} as SuccessResponse<BlogResponse[]>,
+  BlogList: {} as SuccessResponse<BlogResponse[], UserResponse>,
   isLoading: false,
 });

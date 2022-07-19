@@ -1,11 +1,11 @@
-import { Grid, CircularProgress, Skeleton } from "@mui/material";
+import { Grid, Skeleton } from "@mui/material";
 import React from "react";
 
 interface LoaderModal {
   width: number;
   height: number;
   count: number;
-  size:number
+  size: number;
 }
 
 function LoaderComponent({ width, height, count, size }: LoaderModal) {
@@ -24,7 +24,7 @@ function LoaderComponent({ width, height, count, size }: LoaderModal) {
               variant="rectangular"
               width={width}
               height={height}
-              style={{ marginTop: 10,borderRadius:5 }}
+              style={{ marginTop: 10, borderRadius: 5 }}
             />
           </Grid>
         );

@@ -1,19 +1,13 @@
 import React from "react";
-import {
-  Typography,
-  Card,
-  CardContent,
-  CardHeader,
-  Button,
-} from "@mui/material";
+import { Typography, Card, CardContent } from "@mui/material";
 import { BlogResponse } from "../Models/Response/BlogModelResponse";
 import { motion } from "framer-motion";
 
-interface BlogCarProps {
+interface BlogProps {
   blogData: BlogResponse;
 }
 
-function BlogCardComponent(blog: BlogCarProps) {
+function BlogCardComponent(blog: BlogProps) {
   return (
     <motion.div whileHover={{ scale: 1.1 }} animate={{ y: [-10, 0] }}>
       <Card
@@ -24,7 +18,7 @@ function BlogCardComponent(blog: BlogCarProps) {
           height: 200,
           background:
             "-webkit-linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-      
+
           borderWidth: 0,
         }}
       >

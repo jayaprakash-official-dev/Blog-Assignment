@@ -1,6 +1,7 @@
 import { UserState,BlogState } from "./store";
 import UserService from "../Services/UserService";
 import BlogServices from "../Services/BlogService";
+import { UserResponse } from "../Models/Response/UserModelResponse";
 
 export class UserStateManager {
   static getUser = async () => {
@@ -8,8 +9,8 @@ export class UserStateManager {
     UserState.UserList = getUserData;
   };
 
-  static getUserBlog = async (userId?: number) => {
-    const getBlogData = await BlogServices.getBlogs(userId);
+  static getUserBlog = async (user: UserResponse) => {
+    const getBlogData = await BlogServices.getBlogs(user);
     BlogState.BlogList = getBlogData;
   };
 }
